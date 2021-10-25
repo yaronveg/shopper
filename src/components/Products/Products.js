@@ -2,7 +2,7 @@ import "./Products.css";
 import Product from "../Product/Product";
 
 function Products() {
-  const itemNum = 10;
+  const itemNum = 6;
   const listItems = new Array(itemNum).fill(
     <>
       <Product />
