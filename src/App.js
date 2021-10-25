@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
 
-const serverData = [
+const products = [
   {
     id: 1,
     title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -275,7 +275,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Products data={serverData} />
+      <Products products={products} />
     </div>
   );
 }
