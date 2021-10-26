@@ -1,0 +1,24 @@
+.blink-container {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(175, 159, 159);
+  color: #fff;
+}
+button {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:active {
+  transform: scale(0.98);
+  background: rgb(233, 233, 233);
+}
+h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}

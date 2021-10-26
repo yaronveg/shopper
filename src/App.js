@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
+import Blink from "./components/Blink/Blink";
 
 const products = [
   {
@@ -275,6 +276,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Blink/>
       <Products products={products} />
     </div>
   );
