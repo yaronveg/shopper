@@ -6,13 +6,13 @@ function Blink() {
   return (
     <div className="blink-container">
       <button
-        onClick={(e) => {
+        onClick={() => {
           doggoShowSet(!doggoShow);
         }}
       >
         Show / Hide Doggo
       </button>
-      {doggoShow ? <h1>Doggo</h1> : <h1> </h1>}
+      <h1 style={{ visibility: doggoShow ? "visible" : "hidden" }}>Doggo</h1>
     </div>
   );
 }
