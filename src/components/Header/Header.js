@@ -12,7 +12,7 @@ function Header({ cats, handleCatChange }) {
             {cats.map((cat) => {
               i++;
               return (
-                <option key={i} value={cat}>
+                <option key={cat} value={cat}>
                   {cat}
                 </option>
               );
