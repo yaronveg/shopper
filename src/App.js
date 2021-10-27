@@ -276,7 +276,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Blink/>
+      <Blink />
       <Products products={products} />
     </div>
   );
