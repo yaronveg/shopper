@@ -1,5 +1,5 @@
 import "./Header.css";
-let i = 0;
+
 function Header({ cats, handleCatChange }) {
   return (
     <nav className="product-filter">
@@ -10,7 +10,6 @@ function Header({ cats, handleCatChange }) {
           <label>Filter by:</label>
           <select onChange={(e) => handleCatChange(e.target.value)}>
             {cats.map((cat) => {
-              i++;
               return (
                 <option key={cat} value={cat}>
                   {cat}
