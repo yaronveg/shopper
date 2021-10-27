@@ -1,3 +1,5 @@
+import { faDog } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import "./Blink.css";
 
@@ -8,7 +10,13 @@ function Blink() {
       <button onClick={() => doggoShowSet(!doggoShow)}>
         Show / Hide Doggo
       </button>
-      <h1 style={{ visibility: doggoShow ? "visible" : "hidden" }}>Doggo</h1>
+      <div
+        className="doggo"
+        style={{ visibility: doggoShow ? "visible" : "hidden" }}
+      >
+        <h1>Doggo</h1>
+        <FontAwesomeIcon icon={faDog} size="2x"></FontAwesomeIcon>
+      </div>
     </div>
   );
 }

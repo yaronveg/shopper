@@ -1,4 +1,7 @@
 .blink-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   text-align: center;
   background-color: rgb(175, 159, 159);
@@ -23,4 +26,10 @@ h1 {
   margin: 1rem;
   font-size: 2rem;
   vertical-align: middle;
+}
+
+.doggo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
