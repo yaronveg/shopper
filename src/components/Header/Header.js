@@ -9,6 +9,7 @@ function Header({ cats, handleCatChange }) {
         <div className="collection-sort">
           <label>Filter by:</label>
           <select onChange={(e) => handleCatChange(e.target.value)}>
+            <option value="All">All</option>
             {cats.map((cat) => {
               return (
                 <option key={cat} value={cat}>

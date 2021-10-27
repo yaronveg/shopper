@@ -278,7 +278,7 @@ const categories = products
   .filter((value, index, array) => array.indexOf(value) === index);
 
 function App() {
-  const [category, setCategory] = useState("all");
+  const [category, setCategory] = useState("All");
   const handleCatChange = (categoryChange) => {
     setCategory(categoryChange);
   };

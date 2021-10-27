@@ -3,7 +3,7 @@ import Product from "../Product/Product";
 
 function Products({ products, currentCategory }) {
   let filtered = [];
-  if (currentCategory !== "all") {
+  if (currentCategory !== "All") {
     filtered = products.filter(
       (product) => product.category === currentCategory
     );
