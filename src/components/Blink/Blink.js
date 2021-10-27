@@ -5,11 +5,7 @@ function Blink() {
   const [doggoShow, doggoShowSet] = useState(true);
   return (
     <div className="blink-container">
-      <button
-        onClick={() => {
-          doggoShowSet(!doggoShow);
-        }}
-      >
+      <button onClick={() => doggoShowSet(!doggoShow)}>
         Show / Hide Doggo
       </button>
       <h1 style={{ visibility: doggoShow ? "visible" : "hidden" }}>Doggo</h1>
