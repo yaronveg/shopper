@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
@@ -272,12 +273,21 @@ const products = [
   },
 ];
 
+const categories = products
+  .map((p) => p.category)
+  .filter((value, index, array) => array.indexOf(value) === index);
+
 function App() {
+  const [category, setCategory] = useState("");
+  const handleCatChange = (categoryChange) => {
+    setCategory(categoryChange);
+  };
+
   return (
     <div className="App">
-      <Header />
+      <Header cats={categories} handleCatChange={handleCatChange} />
       <Blink />
-      <Products products={products} />
+      <Products products={products} currentCategory={category} />
     </div>
   );
 }
