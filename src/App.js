@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
-import Blink from "./components/Blink/Blink";
+import Cart from "./components/Cart/Cart";
+import CartContext from "./CartContext";
 
 function App() {
   const [products, setProducts] = useState(null);
@@ -10,7 +11,7 @@ function App() {
   const handleCatChange = (categoryChange) => {
     setCategory(categoryChange);
   };
-
+  const [cart, setCart] = useState({ cartShow: false, cartProducts: [] });
   useEffect(() => {
     fetch("https://fakestoreapi.com/products").then((response) =>
       response.json().then((data) => setProducts(data))
@@ -22,14 +23,17 @@ function App() {
       .map((p) => p.category)
       .filter((value, index, array) => array.indexOf(value) === index);
   }
-
   return (
     <div className="App">
-      {products && (
-        <Header cats={getCategories()} handleCatChange={handleCatChange} />
-      )}
-      {products && <Blink />}
-      {products && <Products products={products} currentCategory={category} />}
+      <CartContext.Provider value={{ cart, setCart }}>
+        {cart.cartShow && <Cart />}
+        {products && (
+          <Header cats={getCategories()} handleCatChange={handleCatChange} />
+        )}
+        {products && (
+          <Products products={products} currentCategory={category} />
+        )}
+      </CartContext.Provider>
     </div>
   );
 }

@@ -1,0 +1,15 @@
+.cart {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 300px;
+  background-color: #fff;
+  padding: 1.5rem;
+  z-index: 100;
+}
+button.close {
+  display: inline-block;
+  position: absolute;
+  right: 30px;
+}

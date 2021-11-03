@@ -1,0 +1,19 @@
+.cart-product-card {
+  display: flex;
+
+  padding: 2%;
+  /* flex: 1 25%; */
+
+  background-color: #fff;
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+}
+
+.cart-product-image img {
+  width: 100%;
+}
+
+.cart-product-info {
+  margin-top: auto;
+  padding-top: 20px;
+  text-align: center;
+}

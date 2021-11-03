@@ -1,5 +1,13 @@
 /* Product Layout */
 
+h4 {
+  margin: auto 0;
+}
+a {
+  text-decoration: none;
+  color: orangered;
+}
+
 .product-filter {
   display: flex;
   padding: 30px 0;
@@ -15,7 +23,8 @@
   flex-direction: column;
 }
 
-.collection-sort:first-child {
+.collection-sort:nth-child(1),
+.collection-sort:nth-child(2) {
   padding-right: 20px;
 }
 
