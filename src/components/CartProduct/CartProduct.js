@@ -1,6 +1,6 @@
 // import { useContext } from "react";
 // import CartContext from "../../CartContext";
-// import Counter from "../Counter/Counter";
+import Counter from "../Counter/Counter";
 import "./CartProduct.css";
 
 function CartProduct({ id, title, price, image }) {
@@ -15,20 +15,7 @@ function CartProduct({ id, title, price, image }) {
         <h5>{title}</h5>
         <h6>${price}</h6>
       </div>
-      {/* <Counter></Counter> */}
-      {/* <button
-        onClick={() =>
-          setCart({
-            cartShow: cartShow,
-            cartProducts: [
-              ...cartProducts,
-              (cart.cartProducts[id] = { id, image, title, price }),
-            ],
-          })
-        }
-      >
-        Add To Cart
-      </button> */}
+      <Counter></Counter>
     </div>
   );
 }

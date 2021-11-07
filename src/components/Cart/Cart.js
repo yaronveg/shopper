@@ -13,7 +13,6 @@ function Cart() {
   const cartList = cartProducts.map(({ id, title, price, image }) => (
     <CartProduct key={id} id={id} title={title} price={price} image={image} />
   ));
-  console.log(cart.cartProducts);
   return (
     <div
       className="cart"

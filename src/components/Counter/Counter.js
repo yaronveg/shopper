@@ -9,6 +9,10 @@ function Counter() {
   const delNumber = () => {
     setCounter(counter - 1);
   };
+  const changeAmount = () => {
+    console.log(`amount changed to ${counter}`);
+  };
+
   return (
     <div className="counter">
       <button onClick={addNumber} className="addItem">
@@ -18,8 +22,8 @@ function Counter() {
         type="text"
         className="itemAmount"
         value={counter}
-        defaultValue="1"
-      ></input>
+        onChange={changeAmount()}
+      />
       <button onClick={delNumber} className="remItem">
         -
       </button>
