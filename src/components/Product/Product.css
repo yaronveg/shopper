@@ -1,6 +1,7 @@
 .product-card {
   display: flex;
   flex-direction: column;
+  /* max-height: 200px; */
 
   padding: 2%;
   flex: 1 25%;

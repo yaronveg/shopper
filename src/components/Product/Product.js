@@ -5,6 +5,7 @@ import "./Product.css";
 function Product({ id, title, price, image }) {
   const { cart, setCart } = useContext(CartContext);
   const { cartShow, cartProducts } = cart;
+
   return (
     <div className="product-card" id={id}>
       <div className="product-image">
@@ -15,15 +16,17 @@ function Product({ id, title, price, image }) {
         <h6>${price}</h6>
       </div>
       <button
-        onClick={() =>
-          setCart({
-            cartShow: cartShow,
-            cartProducts: [
-              ...cartProducts,
-              (cart.cartProducts[id] = { id, image, title, price }),
-            ],
-          })
-        }
+        onClick={() => {
+          cartProducts.filter((product) => product.id === id).length < 1
+            ? setCart({
+                cartShow: cartShow,
+                cartProducts: [...cartProducts, { id, image, title, price }],
+              })
+            : setCart({
+                cartShow: cartShow,
+                cartProducts: cartProducts,
+              });
+        }}
       >
         Add To Cart
       </button>
