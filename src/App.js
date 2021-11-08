@@ -4,7 +4,6 @@ import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
 import CartContext from "./CartContext";
-import Counter from "./components/Counter/Counter";
 
 function App() {
   const [products, setProducts] = useState(null);
@@ -26,7 +25,6 @@ function App() {
   }
   return (
     <div className="App">
-      <Counter></Counter>
       <CartContext.Provider value={{ cart, setCart }}>
         <Cart />
         {products && (
