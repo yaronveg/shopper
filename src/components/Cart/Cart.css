@@ -12,4 +12,10 @@ button.close {
   display: inline-block;
   position: absolute;
   right: 30px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+}
+button.close:hover {
+  text-decoration: underline;
 }

@@ -26,7 +26,7 @@ function Cart({ cartShow, setCartShow }) {
       <br />
       <h2>
         <strong>Total: </strong>
-        {priceSum}
+        {priceSum} $
       </h2>
       <br />
       {cartList}
