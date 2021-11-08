@@ -1,10 +1,6 @@
 import "./Header.css";
-import { useContext } from "react";
-import CartContext from "../../CartContext";
 
-function Header({ cats, handleCatChange }) {
-  const { cart, setCart } = useContext(CartContext);
-  const { cartShow } = cart;
+function Header({ cats, handleCatChange, cartShow, setCartShow }) {
   return (
     <nav className="product-filter">
       <h1>Jackets</h1>
@@ -36,16 +32,7 @@ function Header({ cats, handleCatChange }) {
             <option value="/">Date, old to new</option>
           </select>
         </div>
-        <button
-          onClick={() =>
-            setCart({
-              cartShow: !cartShow,
-              cartProducts: cart.cartProducts,
-            })
-          }
-        >
-          My Cart
-        </button>
+        <button onClick={() => setCartShow(!cartShow)}>My Cart</button>
       </div>
     </nav>
   );
