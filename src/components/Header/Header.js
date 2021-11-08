@@ -1,4 +1,6 @@
 import "./Header.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 function Header({ cats, handleCatChange, cartShow, setCartShow }) {
   return (
@@ -7,7 +9,10 @@ function Header({ cats, handleCatChange, cartShow, setCartShow }) {
       <div className="sort">
         <div className="collection-sort">
           <label>Filter by:</label>
-          <select onChange={(e) => handleCatChange(e.target.value)}>
+          <select
+            className="dropdown"
+            onChange={(e) => handleCatChange(e.target.value)}
+          >
             <option value="All">All</option>
             {cats.map((cat) => {
               return (
@@ -21,7 +26,7 @@ function Header({ cats, handleCatChange, cartShow, setCartShow }) {
 
         <div className="collection-sort">
           <label>Sort by:</label>
-          <select>
+          <select className="dropdown">
             <option value="/">Featured</option>
             <option value="/">Best Selling</option>
             <option value="/">Alphabetically, A-Z</option>
@@ -32,7 +37,9 @@ function Header({ cats, handleCatChange, cartShow, setCartShow }) {
             <option value="/">Date, old to new</option>
           </select>
         </div>
-        <button onClick={() => setCartShow(!cartShow)}>My Cart</button>
+        <button className="cartBtn" onClick={() => setCartShow(!cartShow)}>
+          <FontAwesomeIcon className="cartIcon" icon={faShoppingCart} />
+        </button>
       </div>
     </nav>
   );

@@ -18,4 +18,5 @@ button.close {
 }
 button.close:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
