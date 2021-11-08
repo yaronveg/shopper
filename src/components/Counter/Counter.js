@@ -27,8 +27,6 @@ function Counter({ id, title, image, price }) {
   };
 
   const changeAmount = (e) => {
-    ///////////// WIP //////////////
-    //
     let newAmount = e.target.value;
     if (newAmount > 0 && productInCart) {
       cart[productCartIndex].amount = newAmount;
@@ -43,6 +41,7 @@ function Counter({ id, title, image, price }) {
       }
     }
   };
+
   return (
     <div className="counter">
       <button onClick={addProduct} className="addItem">
@@ -54,7 +53,6 @@ function Counter({ id, title, image, price }) {
         className="itemAmount"
         value={productInCart ? cart[productCartIndex].amount : 0}
         onChange={changeAmount}
-        // readOnly
       />
       <button
         onClick={removeProduct}
