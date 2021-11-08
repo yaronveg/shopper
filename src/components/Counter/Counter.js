@@ -23,14 +23,26 @@ function Counter({ id, title, image, price }) {
     } else if (cart[productCartIndex].amount === 1) {
       const newCart = cart.filter((product) => product !== productInCart);
       setCart([...newCart]);
-    } else {
     }
   };
 
-  const changeAmount = () => {
-    console.log(`amount changed to ${cart[productCartIndex].amount}`);
+  const changeAmount = (e) => {
+    ///////////// WIP //////////////
+    //
+    let newAmount = e.target.value;
+    if (newAmount > 0 && productInCart) {
+      cart[productCartIndex].amount = newAmount;
+      setCart([...cart]);
+    } else if (newAmount > 0 && !productInCart) {
+      setCart([...cart, { id, title, price, image, amount: newAmount }]);
+    } else {
+      e.target.value = 0;
+      if (productInCart) {
+        const newCart = cart.filter((product) => product !== productInCart);
+        setCart([...newCart]);
+      }
+    }
   };
-
   return (
     <div className="counter">
       <button onClick={addProduct} className="addItem">
@@ -42,6 +54,7 @@ function Counter({ id, title, image, price }) {
         className="itemAmount"
         value={productInCart ? cart[productCartIndex].amount : 0}
         onChange={changeAmount}
+        // readOnly
       />
       <button
         onClick={removeProduct}
