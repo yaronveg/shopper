@@ -1,0 +1,31 @@
+.counter {
+  display: inline-block;
+  width: 100%;
+}
+.counter * {
+  border: none;
+  padding: 0.3rem;
+}
+.addItem {
+  border-radius: 4px 0 0 4px;
+  /* background: rgb(219, 135, 24); */
+  background: rgb(160, 134, 99);
+  color: #fff;
+  cursor: pointer;
+}
+.remItem {
+  border-radius: 0 4px 4px 0;
+  background: rgb(160, 134, 99);
+  color: #fff;
+  cursor: pointer;
+}
+.remItem:disabled {
+  background: #aaa;
+  color: #ddd;
+  cursor: default;
+}
+.itemAmount {
+  background: rgb(240, 236, 230);
+  width: 1rem;
+  text-align: center;
+}

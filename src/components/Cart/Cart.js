@@ -3,14 +3,13 @@ import { useContext } from "react";
 import CartContext from "../../CartContext";
 import CartProduct from "../CartProduct/CartProduct";
 
-function Cart() {
-  const { cart, setCart } = useContext(CartContext);
-  const { cartShow, cartProducts } = cart;
-  const priceSum = cartProducts.reduce(
-    (acc, product) => acc + product.price,
+function Cart({ cartShow, setCartShow }) {
+  const { cart } = useContext(CartContext);
+  const priceSum = cart.reduce(
+    (acc, product) => acc + product.price * product.amount,
     0
   );
-  const cartList = cartProducts.map(({ id, title, price, image }) => (
+  const cartList = cart.map(({ id, title, price, image }) => (
     <CartProduct key={id} id={id} title={title} price={price} image={image} />
   ));
   return (
@@ -18,15 +17,7 @@ function Cart() {
       className="cart"
       style={cartShow ? { right: 0 } : { right: -500 + "px" }}
     >
-      <button
-        className="close"
-        onClick={() =>
-          setCart({
-            cartShow: !cartShow,
-            cartProducts: cart.cartProducts,
-          })
-        }
-      >
+      <button className="close" onClick={() => setCartShow(false)}>
         X
       </button>
       <br />
@@ -35,7 +26,7 @@ function Cart() {
       <br />
       <h2>
         <strong>Total: </strong>
-        {priceSum}
+        {priceSum} $
       </h2>
       <br />
       {cartList}

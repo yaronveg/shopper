@@ -1,11 +1,7 @@
-import { useContext } from "react";
-import CartContext from "../../CartContext";
+import Counter from "../Counter/Counter";
 import "./Product.css";
 
 function Product({ id, title, price, image }) {
-  const { cart, setCart } = useContext(CartContext);
-  const { cartShow, cartProducts } = cart;
-
   return (
     <div className="product-card" id={id}>
       <div className="product-image">
@@ -15,21 +11,7 @@ function Product({ id, title, price, image }) {
         <h5>{title}</h5>
         <h6>${price}</h6>
       </div>
-      <button
-        onClick={() => {
-          cartProducts.filter((product) => product.id === id).length < 1
-            ? setCart({
-                cartShow: cartShow,
-                cartProducts: [...cartProducts, { id, image, title, price }],
-              })
-            : setCart({
-                cartShow: cartShow,
-                cartProducts: cartProducts,
-              });
-        }}
-      >
-        Add To Cart
-      </button>
+      <Counter id={id} title={title} image={image} price={price} />
     </div>
   );
 }
