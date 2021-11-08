@@ -17,6 +17,6 @@ button.close {
   font-size: 1.2rem;
 }
 button.close:hover {
-  text-decoration: underline;
+  color: rgb(158, 125, 86);
   cursor: pointer;
 }

@@ -19,6 +19,10 @@
   color: #fff;
   cursor: pointer;
 }
+.addItem:hover,
+.remItem:hover {
+  background: rgb(177, 150, 116);
+}
 .remItem:disabled {
   background: #aaa;
   color: #ddd;
