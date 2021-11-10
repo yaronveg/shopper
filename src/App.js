@@ -15,9 +15,13 @@ function pricetext(price) {
 
 function App() {
   const [products, setProducts] = useState([]);
+  const prices = products.map((product) => product.price);
+  const maxPrice = Math.max(...products.map((product) => product.price));
+  const minPrice = Math.min(...products.map((product) => product.price));
   const [category, setCategory] = useState("All");
   const handleCatChange = (categoryChange) => {
     setCategory(categoryChange);
+    setPriceRange([Math.min(10), Math.max(200)]);
   };
   const [cart, setCart] = useState([]);
   useEffect(() => {
@@ -33,12 +37,9 @@ function App() {
       .filter((value, index, array) => array.indexOf(value) === index);
   }
 
-  const maxPrice = Math.max(...products.map((product) => product.price));
-  const minPrice = Math.min(...products.map((product) => product.price));
-
   const [priceRange, setPriceRange] = React.useState([0, 1500]);
 
-  const handleChange = (event, newPriceRange) => {
+  const handleRangeChange = (event, newPriceRange) => {
     setPriceRange(newPriceRange);
   };
   return (
@@ -57,7 +58,7 @@ function App() {
           <Slider
             getAriaLabel={() => "Price Range"}
             value={priceRange}
-            onChange={handleChange}
+            onChange={handleRangeChange}
             valueLabelDisplay="auto"
             getAriaValueText={pricetext}
             min={minPrice}
