@@ -1,7 +1,13 @@
 import "./Products.css";
 import Product from "../Product/Product";
 
-function Products({ products, currentCategory, priceRange }) {
+function Products({
+  products,
+  currentCategory,
+  priceRange,
+  sliderUpdate,
+  setSlider,
+}) {
   const productsRanged = products.filter(
     (product) =>
       product.price >= priceRange[0] && product.price <= priceRange[1]
@@ -16,6 +22,12 @@ function Products({ products, currentCategory, priceRange }) {
   } else {
     filtered = productsRanged;
   }
+
+  if (!sliderUpdate)
+    setSlider([
+      Math.min(...filtered.map((product) => product.price)),
+      Math.max(...filtered.map((product) => product.price)),
+    ]);
 
   const productList = filtered.map(({ id, title, price, image }) => (
     <Product key={id} id={id} title={title} price={price} image={image} />

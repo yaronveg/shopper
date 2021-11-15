@@ -5,7 +5,6 @@ import Header from "./components/Header/Header";
 import Products from "./components/Products/Products";
 import Cart from "./components/Cart/Cart";
 import CartContext from "./CartContext";
-// import RangeSlider from "./components/Slider/Slider";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 
@@ -15,11 +14,10 @@ function pricetext(price) {
 
 function App() {
   const [products, setProducts] = useState([]);
-  // const prices = products.map((product) => product.price);
-  // const maxPrice = Math.max(...products.map((product) => product.price));
-  // const minPrice = Math.min(...products.map((product) => product.price));
   const [category, setCategory] = useState("All");
+  const [sliderUpdate, setSliderUpdate] = useState(true);
   const handleCatChange = (categoryChange) => {
+    setSliderUpdate(false);
     setCategory(categoryChange);
   };
   const [cart, setCart] = useState([]);
@@ -37,11 +35,14 @@ function App() {
   }
 
   const [priceRange, setPriceRange] = React.useState([0, 1500]);
-  const [customerRange, setCustomerRange] = React.useState([0, 1500]);
-
+  const [customerRange, setCustomerRange] = React.useState([...priceRange]);
   const handleRangeChange = (event, newPriceRange) => {
     setPriceRange(newPriceRange);
   };
+  function setSlider(range) {
+    setSliderUpdate(true);
+    setCustomerRange(range);
+  }
   return (
     <div className="App">
       <CartContext.Provider value={{ cart, setCart }}>
@@ -70,6 +71,8 @@ function App() {
             products={products}
             currentCategory={category}
             priceRange={priceRange}
+            sliderUpdate={sliderUpdate}
+            setSlider={setSlider}
           />
         )}
       </CartContext.Provider>
