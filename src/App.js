@@ -15,13 +15,12 @@ function pricetext(price) {
 
 function App() {
   const [products, setProducts] = useState([]);
-  const prices = products.map((product) => product.price);
-  const maxPrice = Math.max(...products.map((product) => product.price));
-  const minPrice = Math.min(...products.map((product) => product.price));
+  // const prices = products.map((product) => product.price);
+  // const maxPrice = Math.max(...products.map((product) => product.price));
+  // const minPrice = Math.min(...products.map((product) => product.price));
   const [category, setCategory] = useState("All");
   const handleCatChange = (categoryChange) => {
     setCategory(categoryChange);
-    setPriceRange([Math.min(10), Math.max(200)]);
   };
   const [cart, setCart] = useState([]);
   useEffect(() => {
@@ -38,6 +37,7 @@ function App() {
   }
 
   const [priceRange, setPriceRange] = React.useState([0, 1500]);
+  const [customerRange, setCustomerRange] = React.useState([0, 1500]);
 
   const handleRangeChange = (event, newPriceRange) => {
     setPriceRange(newPriceRange);
@@ -61,8 +61,8 @@ function App() {
             onChange={handleRangeChange}
             valueLabelDisplay="auto"
             getAriaValueText={pricetext}
-            min={minPrice}
-            max={maxPrice}
+            min={customerRange[0]}
+            max={customerRange[1]}
           />
         </Box>
         {products && (
