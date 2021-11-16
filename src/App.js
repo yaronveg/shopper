@@ -13,36 +13,45 @@ function pricetext(price) {
 }
 
 function App() {
+  /////// STATES ////////
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("All");
   const [sliderUpdate, setSliderUpdate] = useState(true);
-  const handleCatChange = (categoryChange) => {
-    setSliderUpdate(false);
-    setCategory(categoryChange);
-  };
   const [cart, setCart] = useState([]);
+  const [cartShow, setCartShow] = useState(false);
+  const [priceRange, setPriceRange] = React.useState([0, 1500]);
+  const [customerRange, setCustomerRange] = React.useState([...priceRange]);
+
+  /////// GET DATA //////
   useEffect(() => {
     fetch("https://fakestoreapi.com/products").then((response) =>
       response.json().then((data) => setProducts(data))
     );
   }, []);
-  const [cartShow, setCartShow] = useState(false);
 
-  function getCategories() {
-    return products
+  ////// FUNCTIONS //////
+  const getCategories = () =>
+    products
       .map((p) => p.category)
       .filter((value, index, array) => array.indexOf(value) === index);
-  }
 
-  const [priceRange, setPriceRange] = React.useState([0, 1500]);
-  const [customerRange, setCustomerRange] = React.useState([...priceRange]);
-  const handleRangeChange = (event, newPriceRange) => {
-    setPriceRange(newPriceRange);
+  const handleCatChange = (categoryChange) => {
+    setSliderUpdate(false);
+    setCategory(categoryChange);
   };
+
   function setSlider(range) {
     setSliderUpdate(true);
     setCustomerRange(range);
   }
+
+  function handleRangeChange(event, newPriceRange) {
+    setPriceRange(newPriceRange);
+  }
+  // const handleRangeChange = (event, newPriceRange) => {
+  //   setPriceRange(newPriceRange);
+  // };
+
   return (
     <div className="App">
       <CartContext.Provider value={{ cart, setCart }}>
