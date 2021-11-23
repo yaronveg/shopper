@@ -43,6 +43,7 @@ label {
 }
 
 .cartBtn {
+  position: relative;
   padding: 0.2rem;
   margin: 0;
   background: none;
@@ -55,4 +56,15 @@ label {
 }
 .cartIcon {
   font-size: 20px;
+}
+.products-counter {
+  position: absolute;
+  top: 0px;
+  right: -10px;
+  background: steelblue;
+  color: white;
+  padding: 0.1rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
 }

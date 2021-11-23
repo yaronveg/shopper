@@ -1,21 +1,26 @@
 .product-card {
   display: flex;
   flex-direction: column;
-  /* max-height: 200px; */
+  overflow: hidden;
 
   padding: 2%;
-  flex: 1 25%;
+  flex: 1 24%;
 
   background-color: #fff;
   box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
 }
-
+.product-image {
+  max-height: 100px;
+}
 .product-image img {
   width: 100%;
+  overflow: hidden;
 }
 
 .product-info {
   margin-top: auto;
-  padding-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px 0;
   text-align: center;
+  background: rgba(255, 255, 255, 0.75);
 }

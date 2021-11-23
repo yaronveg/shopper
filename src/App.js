@@ -19,8 +19,8 @@ function App() {
   const [sliderUpdate, setSliderUpdate] = useState(true);
   const [cart, setCart] = useState([]);
   const [cartShow, setCartShow] = useState(false);
-  const [priceRange, setPriceRange] = React.useState([0, 1500]);
-  const [customerRange, setCustomerRange] = React.useState([...priceRange]);
+  const [priceRange, setPriceRange] = useState([0, 1500]);
+  const [customerRange, setCustomerRange] = useState([...priceRange]);
 
   /////// GET DATA //////
   useEffect(() => {
