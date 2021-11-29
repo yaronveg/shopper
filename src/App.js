@@ -15,19 +15,34 @@ function pricetext(price) {
 function App() {
   /////// STATES ////////
   const [products, setProducts] = useState([]);
+  const [priceRange, setPriceRange] = useState([0, 0]);
+  const [customerRange, setCustomerRange] = useState(priceRange);
+
+  ///// get data ////
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products").then((response) =>
+      response
+        .json()
+        .then((data) => setProducts(data))
+        .then(() =>
+          setPriceRange([
+            Math.min(...products.map((product) => product.price)),
+            Math.max(...products.map((product) => product.price)),
+          ])
+        )
+        .then(() => {
+          setCustomerRange(priceRange);
+        })
+    );
+    // setSlider([
+    //   Math.min(...products.map((product) => product.price)),
+    //   Math.max(...products.map((product) => product.price)),
+    // ]);
+  }, []);
   const [category, setCategory] = useState("All");
   const [sliderUpdate, setSliderUpdate] = useState(true);
   const [cart, setCart] = useState([]);
   const [cartShow, setCartShow] = useState(false);
-  const [priceRange, setPriceRange] = useState([0, 1500]);
-  const [customerRange, setCustomerRange] = useState([...priceRange]);
-
-  /////// GET DATA //////
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products").then((response) =>
-      response.json().then((data) => setProducts(data))
-    );
-  }, []);
 
   ////// FUNCTIONS //////
   const getCategories = () =>
@@ -48,9 +63,27 @@ function App() {
   function handleRangeChange(event, newPriceRange) {
     setPriceRange(newPriceRange);
   }
-  // const handleRangeChange = (event, newPriceRange) => {
-  //   setPriceRange(newPriceRange);
-  // };
+
+  // Products for Products component
+
+  const productsRanged = products.filter(
+    (product) =>
+      product.price >= priceRange[0] && product.price <= priceRange[1]
+  );
+
+  let filtered = [];
+  if (category !== "All") {
+    filtered = productsRanged.filter(
+      (product) => product.category === category
+    );
+  } else {
+    filtered = productsRanged;
+  }
+  if (!sliderUpdate)
+    setSlider([
+      Math.min(...filtered.map((product) => product.price)),
+      Math.max(...filtered.map((product) => product.price)),
+    ]);
 
   return (
     <div className="App">
@@ -75,15 +108,7 @@ function App() {
             max={customerRange[1]}
           />
         </Box>
-        {products && (
-          <Products
-            products={products}
-            currentCategory={category}
-            priceRange={priceRange}
-            sliderUpdate={sliderUpdate}
-            setSlider={setSlider}
-          />
-        )}
+        {products && <Products products={filtered} />}
       </CartContext.Provider>
     </div>
   );
