@@ -15,26 +15,39 @@ function pricetext(price) {
 function App() {
   /////// STATES ////////
   const [products, setProducts] = useState([]);
+  const [priceRange, setPriceRange] = useState([]);
+  const [customerRange, setCustomerRange] = useState([]);
+  const [category, setCategory] = useState("All");
+  const [cart, setCart] = useState([]);
+  const [cartShow, setCartShow] = useState(false);
+
   ///// get data ////
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
+        setPriceRange([
+          Math.min(...data.map((product) => product.price)),
+          Math.max(...data.map((product) => product.price)),
+        ]);
+        setCustomerRange([
+          Math.min(...data.map((product) => product.price)),
+          Math.max(...data.map((product) => product.price)),
+        ]);
       });
   }, []);
-  const initRange = [
-    Math.min(...products.map((product) => product.price)),
-    Math.max(...products.map((product) => product.price)),
-  ];
-  const [priceRange, setPriceRange] = useState(initRange);
-  console.log(initRange);
-  const [customerRange, setCustomerRange] = useState(priceRange);
-  const [category, setCategory] = useState("All");
-  const [cart, setCart] = useState([]);
-  const [cartShow, setCartShow] = useState(false);
 
   ////// FUNCTIONS //////
+  const filterProducts = function (cat) {
+    if (cat !== "All") {
+      filtered = productsRanged.filter(
+        (product) => product.category === category
+      );
+    } else {
+      filtered = productsRanged;
+    }
+  };
   const getCategories = () =>
     products
       .map((p) => p.category)
@@ -42,6 +55,12 @@ function App() {
 
   const handleCatChange = (categoryChange) => {
     setCategory(categoryChange);
+    filterProducts(categoryChange);
+    // setPriceRange([
+    //   Math.min(...filtered.map((product) => product.price)),
+    //   Math.max(...filtered.map((product) => product.price)),
+    // ]);
+    // setCustomerRange(priceRange);
   };
 
   function handleRangeChange(event, newPriceRange) {
@@ -49,13 +68,13 @@ function App() {
   }
 
   // Products for Products component
-
   const productsRanged = products.filter(
     (product) =>
       product.price >= customerRange[0] && product.price <= customerRange[1]
   );
 
   let filtered = [];
+
   if (category !== "All") {
     filtered = productsRanged.filter(
       (product) => product.category === category
@@ -79,12 +98,12 @@ function App() {
         <Box sx={{ width: 300 }}>
           <Slider
             getAriaLabel={() => "Price Range"}
-            value={priceRange}
+            value={customerRange}
             onChange={handleRangeChange}
             valueLabelDisplay="auto"
             getAriaValueText={pricetext}
-            min={customerRange[0]}
-            max={customerRange[1]}
+            min={priceRange[0]}
+            max={priceRange[1]}
           />
         </Box>
         {/* {products && <Products products={filtered} />} */}
