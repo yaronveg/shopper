@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useParams } from "react-router";
 import Cart from "../components/Cart/Cart";
-import CartContext from "../../CartContext";
+import CartContext from "../CartContext";
 
 function ProductDetails() {
   const { id } = useParams();
@@ -16,14 +16,6 @@ function ProductDetails() {
   return (
     <div className="ProductDetails">
       <Cart cartShow={cartShow} setCartShow={setCartShow} />
-      {categories && (
-        <Header
-          cats={categories}
-          handleCatChange={handleCatChange}
-          cartShow={cartShow}
-          setCartShow={setCartShow}
-        />
-      )}
       <h1>Product page! id: {product?.id}</h1>
       {product && (
         <>

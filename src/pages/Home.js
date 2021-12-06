@@ -4,23 +4,21 @@ import "./Home.css";
 import Products from "../components/Products/Products";
 import ProductsHeader from "../components/ProductsHeader/ProductsHeader";
 
-function Home(products) {
+function Home({ products }) {
   /////// STATES ////////
-  const [categories, setCategories] = useState();
+  const [categories, setCategories] = useState([]);
   const [filtered, setFiltered] = useState(products);
   const [priceRange, setPriceRange] = useState([]);
   const [customerRange, setCustomerRange] = useState([]);
   // const [category, setCategory] = useState("All");
 
-  ////// FUNCTIONS //////
-
-  const handleCatChange = (cat) => {
-    if (cat !== "All") {
-      setFiltered(products.filter((product) => product.category === cat));
-    } else {
-      setFiltered(products);
-    }
-  };
+  useEffect(() => {
+    setCategories(
+      products
+        .map((p) => p.category)
+        .filter((value, index, array) => array.indexOf(value) === index)
+    );
+  }, [products]);
 
   ///// on catChange useEffect ////
   useEffect(() => {
@@ -32,12 +30,16 @@ function Home(products) {
       Math.min(...filtered.map((product) => product.price)),
       Math.max(...filtered.map((product) => product.price)),
     ]);
-    setCategories(
-      filtered
-        .map((p) => p.category)
-        .filter((value, index, array) => array.indexOf(value) === index)
-    );
   }, [filtered]);
+
+  ////// FUNCTIONS //////
+  const handleCatChange = (cat) => {
+    if (cat !== "All") {
+      setFiltered(products.filter((product) => product.category === cat));
+    } else {
+      setFiltered(products);
+    }
+  };
 
   function handleRangeChange(event, newPriceRange) {
     setCustomerRange(newPriceRange);
@@ -51,9 +53,9 @@ function Home(products) {
 
   return (
     <div className="Home">
-      {categories && (
+      {categories.length > 0 && (
         <ProductsHeader
-          cats={categories}
+          categories={categories}
           handleCatChange={handleCatChange}
           priceRange={priceRange}
           customerRange={customerRange}

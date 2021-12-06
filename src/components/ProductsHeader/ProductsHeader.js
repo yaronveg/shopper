@@ -4,14 +4,14 @@ import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
-import CartContext from "../CartContext";
+import CartContext from "../../CartContext";
 
 function pricetext(price) {
   return `${price}$`;
 }
 
 function ProductsHeader({
-  cats,
+  categories,
   handleCatChange,
   priceRange,
   customerRange,
@@ -44,7 +44,7 @@ function ProductsHeader({
             onChange={(e) => handleCatChange(e.target.value)}
           >
             <option value="All">All</option>
-            {cats.map((cat) => {
+            {categories.map((cat) => {
               return (
                 <option key={cat} value={cat}>
                   {cat}

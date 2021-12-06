@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Cart from "./components/Cart/Cart";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
-import CartContext from "../CartContext";
+import CartContext from "./CartContext";
 import Header from "./components/Header/Header";
 
 function App() {
@@ -27,9 +27,11 @@ function App() {
         <Link to="/">Home</Link>
         <Cart />
         <Header />
-        <Home products={products} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={products.length > 1 && <Home products={products} />}
+          />
           <Route path="/productdetails/:id" element={<ProductDetails />} />
         </Routes>
       </CartContext.Provider>
