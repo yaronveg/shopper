@@ -4,23 +4,30 @@ import "./Home.css";
 import Products from "../components/Products/Products";
 import ProductsHeader from "../components/ProductsHeader/ProductsHeader";
 
-function Home({ products }) {
+function Home() {
   /////// STATES ////////
+  const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [filtered, setFiltered] = useState(products);
-  const [priceRange, setPriceRange] = useState([]);
-  const [customerRange, setCustomerRange] = useState([]);
-  // const [category, setCategory] = useState("All");
+  const [filtered, setFiltered] = useState([]);
+  const [priceRange, setPriceRange] = useState();
+  const [customerRange, setCustomerRange] = useState();
 
+  useEffect(() => {
+    fetch("/products")
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data);
+      });
+  }, []);
   useEffect(() => {
     setCategories(
       products
         .map((p) => p.category)
         .filter((value, index, array) => array.indexOf(value) === index)
     );
+    setFiltered(products);
   }, [products]);
 
-  ///// on catChange useEffect ////
   useEffect(() => {
     setPriceRange([
       Math.min(...filtered.map((product) => product.price)),
@@ -62,7 +69,7 @@ function Home({ products }) {
           handleRangeChange={handleRangeChange}
         />
       )}
-      {priceRange && <Products products={productsRanged} />}
+      {customerRange && <Products products={productsRanged} />}
     </div>
   );
 }

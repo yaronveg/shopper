@@ -16,6 +16,7 @@ a {
 
 .sort {
   display: flex;
+  align-items: center;
   align-self: flex-end;
 }
 
@@ -29,9 +30,11 @@ a {
   padding: 0.5rem;
 }
 
-.collection-sort:nth-child(1),
-.collection-sort:nth-child(2) {
+.sort > * {
   padding-right: 20px;
+}
+.collection-sort:last-child {
+  padding: 0;
 }
 
 label {
