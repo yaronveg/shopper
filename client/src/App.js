@@ -8,7 +8,6 @@ import ProductDetails from "./pages/ProductDetails";
 import CartContext from "./CartContext";
 import Header from "./components/Header/Header";
 
-//
 function App() {
   const [cart, setCart] = useState([]);
   const [cartShow, setCartShow] = useState(false);
