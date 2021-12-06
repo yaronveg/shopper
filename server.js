@@ -88,7 +88,7 @@ const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
 mongoose.connect(
   `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`,
   async (err) => {
-    err ? console.log(err) : app.listen(8000);
+    err ? console.log(err) : app.listen(process.env.PORT || 8000);
     const dbProducts = await Product.find();
     if (!dbProducts.length) {
       const data = await fetch("https://fakestoreapi.com/products");
