@@ -35,7 +35,7 @@ app.get("*", (req, res) => {
 ////////////// C.R.U.D - CREATE, READ, UPDATE, DELETE //////////////
 
 // READ //
-app.get("/api/products", async (req, res) => {
+app.get("/products", async (req, res) => {
   const term = req.body.term;
   let products = await Product.find();
   if (req.query.term) {
