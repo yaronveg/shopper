@@ -13,7 +13,7 @@ function Home() {
   const [customerRange, setCustomerRange] = useState();
 
   useEffect(() => {
-    fetch("/products")
+    fetch("/api/products")
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
