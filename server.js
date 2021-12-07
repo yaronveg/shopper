@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-
+app.use(express.static(`client/build`));
 // refer to a scheme and define.
 const productSchema = new mongoose.Schema({
   title: String,
@@ -27,10 +27,15 @@ productSchema.methods.whatIsIt = function whatIsIt() {
 // compile schema into a Model.
 const Product = mongoose.model("Product", productSchema);
 
+// a "catchall" handler for any request that doesn't match the C.R.U.D. - will send back React's Index.html file.
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "client/build/index.html");
+});
+
 ////////////// C.R.U.D - CREATE, READ, UPDATE, DELETE //////////////
 
 // READ //
-app.get("/products", async (req, res) => {
+app.get("/api/products", async (req, res) => {
   const term = req.body.term;
   let products = await Product.find();
   if (req.query.term) {
@@ -46,13 +51,13 @@ app.get("/products", async (req, res) => {
 });
 
 // READ product //
-app.get("/products/:id", async (req, res) => {
+app.get("/api/products/:id", async (req, res) => {
   const { id } = req.params;
   res.send(await Product.findById(id));
 });
 
 // CREATE //
-app.post("/products", async (req, res) => {
+app.post("/api/products", async (req, res) => {
   const { title, price, description, category, image, rating } = req.body;
   const newProduct = {
     title,
@@ -67,7 +72,7 @@ app.post("/products", async (req, res) => {
 });
 
 // UPDATE //
-app.put("/products/:id", async (req, res) => {
+app.put("/api/products/:id", async (req, res) => {
   const { id } = req.params;
   const body = req.body;
 
@@ -76,7 +81,7 @@ app.put("/products/:id", async (req, res) => {
 });
 
 // DELETE //
-app.delete("/products/:id", async (req, res) => {
+app.delete("/api/products/:id", async (req, res) => {
   const { id } = req.params;
   const deleted = await Product.findByIdAndDelete(id);
   res.send(deleted);
