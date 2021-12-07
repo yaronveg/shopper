@@ -1,0 +1,39 @@
+.ProductDetails {
+  padding-left: 3rem;
+  max-width: 700px;
+}
+.ProductDetails .title {
+  display: flex;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+.ProductDetails .category {
+  color: dodgerblue;
+}
+
+.col-2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ProductDetails .description {
+  width: 350px;
+  line-height: 1.5rem;
+  font-style: normal;
+  color: #777;
+}
+
+.ProductDetails .price {
+  font-size: 2rem;
+}
+
+.ProductDetails .imgSide {
+  /* height: 300px; */
+  box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
+}
+
+.ProductDetails img {
+  background: #fff;
+  padding: 2rem;
+}

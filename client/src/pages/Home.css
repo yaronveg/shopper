@@ -145,20 +145,11 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #f6f6f6;
 }
-.Home {
-  margin: 0 auto;
-  padding-top: 80px;
-  width: 100%;
-  max-width: 1240px;
-  z-index: 0;
-}
-
 /* Typography */
 
 h1 {
   font-size: 28px;
   font-weight: 300;
-  flex: 1;
 }
 
 h5 {
@@ -176,4 +167,12 @@ h4 {
 a {
   text-decoration: none;
   color: orangered;
+}
+
+.container {
+  margin: 0 auto;
+  padding-top: 80px;
+  width: 100%;
+  max-width: 1240px;
+  z-index: 0;
 }

@@ -1,6 +1,6 @@
+import "./Home.css";
 import { useState, useEffect } from "react";
 import * as React from "react";
-import "./Home.css";
 import Products from "../components/Products/Products";
 import ProductsHeader from "../components/ProductsHeader/ProductsHeader";
 
@@ -59,7 +59,7 @@ function Home() {
   );
 
   return (
-    <div className="Home">
+    <div className="Home container">
       {categories.length > 0 && (
         <ProductsHeader
           categories={categories}
