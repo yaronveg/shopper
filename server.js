@@ -28,7 +28,7 @@ productSchema.methods.whatIsIt = function whatIsIt() {
 const Product = mongoose.model("Product", productSchema);
 
 // a "catchall" handler for any request that doesn't match the C.R.U.D. - will send back React's Index.html file.
-app.get("*", (req, res) => {
+app.get(!`/products${"*"}` && "*", (req, res) => {
   res.sendFile(__dirname + "/client/build/index.html");
 });
 
