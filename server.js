@@ -51,13 +51,13 @@ app.get("/api/products", async (req, res) => {
 });
 
 // READ product //
-app.get("/api/products/:id", async (req, res) => {
+app.get("/products/:id", async (req, res) => {
   const { id } = req.params;
   res.send(await Product.findById(id));
 });
 
 // CREATE //
-app.post("/api/products", async (req, res) => {
+app.post("/products", async (req, res) => {
   const { title, price, description, category, image, rating } = req.body;
   const newProduct = {
     title,
@@ -72,7 +72,7 @@ app.post("/api/products", async (req, res) => {
 });
 
 // UPDATE //
-app.put("/api/products/:id", async (req, res) => {
+app.put("/products/:id", async (req, res) => {
   const { id } = req.params;
   const body = req.body;
 
@@ -81,7 +81,7 @@ app.put("/api/products/:id", async (req, res) => {
 });
 
 // DELETE //
-app.delete("/api/products/:id", async (req, res) => {
+app.delete("/products/:id", async (req, res) => {
   const { id } = req.params;
   const deleted = await Product.findByIdAndDelete(id);
   res.send(deleted);
