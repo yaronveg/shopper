@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
 import { Route, Routes } from "react-router";
-import { Link } from "react-router-dom";
 import Cart from "./components/Cart/Cart";
 import Home from "./pages/Home";
 import ProductDetails from "./pages/ProductDetails";
@@ -15,7 +14,6 @@ function App() {
   return (
     <div className="App">
       <CartContext.Provider value={{ cart, setCart, cartShow, setCartShow }}>
-        <Link to="/">Home</Link>
         <Cart />
         <Header />
         <Routes>

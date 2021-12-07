@@ -142,10 +142,15 @@ table {
 
 body {
   margin: 0 auto;
-  width: 90%;
-  max-width: 1240px;
   font-family: "Roboto", sans-serif;
   background-color: #f6f6f6;
+}
+.Home {
+  margin: 0 auto;
+  padding-top: 80px;
+  width: 100%;
+  max-width: 1240px;
+  z-index: 0;
 }
 
 /* Typography */
@@ -164,4 +169,11 @@ h5 {
 h6 {
   color: #666;
   font-size: 14px;
+}
+h4 {
+  margin: auto 0;
+}
+a {
+  text-decoration: none;
+  color: orangered;
 }

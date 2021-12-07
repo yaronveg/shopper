@@ -5,6 +5,7 @@ import CartContext from "../CartContext";
 
 function ProductDetails() {
   const { id } = useParams();
+  console.log(id);
   const [product, setProduct] = React.useState({});
   React.useEffect(() => {
     fetch(`/api/products/${id}`)

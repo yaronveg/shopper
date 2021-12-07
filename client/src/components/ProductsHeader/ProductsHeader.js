@@ -18,17 +18,24 @@ function ProductsHeader({
       <h1>Jackets</h1>
       <div className="sort">
         {priceRange && (
-          <Box sx={{ width: 200 }}>
-            <Slider
-              getAriaLabel={() => "Price Range"}
-              value={customerRange}
-              onChange={handleRangeChange}
-              valueLabelDisplay="auto"
-              getAriaValueText={pricetext}
-              min={priceRange[0]}
-              max={priceRange[1]}
-            />
-          </Box>
+          <div className="slideBox">
+            <p>PRICE</p>
+            <Box sx={{ width: 200 }}>
+              <Slider
+                getAriaLabel={() => "Price Range"}
+                value={customerRange}
+                onChange={handleRangeChange}
+                valueLabelDisplay="auto"
+                getAriaValueText={pricetext}
+                min={priceRange[0]}
+                max={priceRange[1]}
+              />
+            </Box>
+            <div className="min-max">
+              <span>min</span>
+              <span>max</span>
+            </div>
+          </div>
         )}
 
         <div className="collection-sort">

@@ -8,20 +8,19 @@
 }
 .addItem {
   border-radius: 4px 0 0 4px;
-  /* background: rgb(219, 135, 24); */
-  background: rgb(160, 134, 99);
+  background: rgb(25, 127, 223);
   color: #fff;
   cursor: pointer;
 }
 .remItem {
   border-radius: 0 4px 4px 0;
-  background: rgb(160, 134, 99);
+  background: rgb(25, 127, 223);
   color: #fff;
   cursor: pointer;
 }
 .addItem:hover,
 .remItem:hover {
-  background: rgb(177, 150, 116);
+  background: rgb(67, 148, 224);
 }
 .remItem:disabled {
   background: #aaa;
