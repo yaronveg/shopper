@@ -5,7 +5,7 @@ import "./Product.css";
 function Product({ id, title, price, image }) {
   return (
     <div className="product-card" id={id}>
-      <Link to={`/productdetails/${id}`}>
+      <Link to={`/products/${id}`}>
         <div className="product-image">
           <img src={image} alt="Img" />
         </div>
