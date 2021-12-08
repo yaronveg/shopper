@@ -35,7 +35,7 @@ function Home() {
     } else {
       setFiltered(products);
     }
-  }, [category]);
+  }, [category, products]);
 
   useEffect(() => {
     setPriceRange([
