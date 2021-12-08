@@ -24,6 +24,7 @@
 - customerRange - Home, ProductsHeader,
 - cart - Header, Counter, Cart
 - cartShow - Header, Cart
+- category - ProductsHeader
 
 ## FUNCTIONS:
 

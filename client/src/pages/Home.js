@@ -11,6 +11,7 @@ function Home() {
   const [filtered, setFiltered] = useState([]);
   const [priceRange, setPriceRange] = useState();
   const [customerRange, setCustomerRange] = useState();
+  const [category, setCategory] = useState("All");
 
   useEffect(() => {
     fetch("/api/products")
@@ -29,6 +30,14 @@ function Home() {
   }, [products]);
 
   useEffect(() => {
+    if (category !== "All") {
+      setFiltered(products.filter((product) => product.category === category));
+    } else {
+      setFiltered(products);
+    }
+  }, [category]);
+
+  useEffect(() => {
     setPriceRange([
       Math.min(...filtered.map((product) => product.price)),
       Math.max(...filtered.map((product) => product.price)),
@@ -41,11 +50,7 @@ function Home() {
 
   ////// FUNCTIONS //////
   const handleCatChange = (cat) => {
-    if (cat !== "All") {
-      setFiltered(products.filter((product) => product.category === cat));
-    } else {
-      setFiltered(products);
-    }
+    setCategory(cat);
   };
 
   function handleRangeChange(event, newPriceRange) {
@@ -62,6 +67,7 @@ function Home() {
     <div className="Home container">
       {categories.length > 0 && (
         <ProductsHeader
+          category={category}
           categories={categories}
           handleCatChange={handleCatChange}
           priceRange={priceRange}

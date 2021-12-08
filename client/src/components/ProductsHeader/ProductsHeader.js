@@ -7,6 +7,7 @@ function pricetext(price) {
 }
 
 function ProductsHeader({
+  category,
   categories,
   handleCatChange,
   priceRange,
@@ -15,7 +16,7 @@ function ProductsHeader({
 }) {
   return (
     <nav className="product-filter">
-      <h1>Jackets</h1>
+      <h1>{category}</h1>
       <div className="sort">
         {priceRange && (
           <div className="slideBox">
